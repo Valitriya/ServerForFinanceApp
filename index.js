@@ -21,3 +21,6 @@ mongoose
 		useNewUrlParser: true,
 		useUnifiedTopology: true,
 	})
+	.then(async () => {
+		app.listen(PORT, () => console.log(`Server Port: ${PORT}`));
+	})
