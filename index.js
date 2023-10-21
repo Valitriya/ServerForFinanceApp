@@ -37,6 +37,6 @@ async function startServer() {
 	} catch (error) {
 	  console.error(`${error} did not connect`);
 	}
-  }
+}
   
   startServer();
