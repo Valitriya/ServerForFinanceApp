@@ -4,19 +4,17 @@ import { loadType } from "mongoose-currency";
 const Schema = mongoose.Schema;
 loadType(mongoose);
 
+const currencyCongig = {
+	type: mongoose.Types.Currency,
+	currency: "USD",
+	get: (v) => v / 100,
+};
+
 const daySchema = new Schema(
 	{
 		date: String,
-		revenue: {
-			type: mongoose.Types.Currency,
-			currency: "USD",
-			get: (v) => v / 100,
-		},
-		expenses: {
-			type: mongoose.Types.Currency,
-			currency: "USD",
-			get: (v) => v / 100,
-		},
+		revenue: { ...currencyCongig },
+		expenses: { ...currencyCongig },
 	},
 	{ toJSON: { getters: true } }
 );
@@ -24,26 +22,10 @@ const daySchema = new Schema(
 const monthSchema = new Schema(
 	{
 		month: String,
-		revenue: {
-			type: mongoose.Types.Currency,
-			currency: "USD",
-			get: (v) => v / 100,
-		},
-		expenses: {
-			type: mongoose.Types.Currency,
-			currency: "USD",
-			get: (v) => v / 100,
-		},
-		operationalExpenses: {
-			type: mongoose.Types.Currency,
-			currency: "USD",
-			get: (v) => v / 100,
-		},
-		nonOperationalExpenses: {
-			type: mongoose.Types.Currency,
-			currency: "USD",
-			get: (v) => v / 100,
-		},
+		revenue: { ...currencyCongig },
+		expenses: { ...currencyCongig },
+		operationalExpenses: { ...currencyCongig },
+		nonOperationalExpenses: { ...currencyCongig },
 		monthlyData: [monthSchema],
 		dailyData: [daySchema],
 	},
@@ -52,28 +34,12 @@ const monthSchema = new Schema(
 
 const KPISchema = new Schema(
 	{
-		totalProfit: {
-			type: mongoose.Types.Currency,
-			currency: "USD",
-			get: (v) => v / 100,
-		},
-		totalRevenue: {
-			type: mongoose.Types.Currency,
-			currency: "USD",
-			get: (v) => v / 100,
-		},
-		totaExpenses: {
-			type: mongoose.Types.Currency,
-			currency: "USD",
-			get: (v) => v / 100,
-		},
+		totalProfit: { ...currencyCongig },
+		totalRevenue: { ...currencyCongig },
+		totaExpenses: { ...currencyCongig },
 		expenseByCategory: {
 			type: Map,
-			of: {
-				type: mongoose.Types.Currency,
-				currency: "USD",
-				get: (v) => v / 100,
-			},
+			of: { ...currencyCongig },
 		},
 		monthlyData: [],
 	},
