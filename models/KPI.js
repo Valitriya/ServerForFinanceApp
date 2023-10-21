@@ -25,11 +25,11 @@ const monthSchemaConfig = configureSchema({
 	expenses: { ...currencyCongig },
 	operationalExpenses: { ...currencyCongig },
 	nonOperationalExpenses: { ...currencyCongig },
-	monthlyData: [monthSchema],
+	monthlyData: [],
 	dailyData: [daySchemaConfig],
 });
 
-const KPISchemaConfig = daySchemaConfig({
+const KPISchemaConfig = configureSchema({
 	totalProfit: { ...currencyCongig },
 	totalRevenue: { ...currencyCongig },
 	totaExpenses: { ...currencyCongig },

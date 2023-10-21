@@ -19,7 +19,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cors());
 
-application.use("/kpi", kpisRouter)
+app.use("/kpi", kpisRouter)
 
 const PORT = process.env.PORT || 9000;
 async function startServer() {
