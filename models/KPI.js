@@ -21,6 +21,35 @@ const daySchema = new Schema(
 	{ toJSON: { getters: true } }
 );
 
+const monthSchema = new Schema(
+	{
+		month: String,
+		revenue: {
+			type: mongoose.Types.Currency,
+			currency: "USD",
+			get: (v) => v / 100,
+		},
+		expenses: {
+			type: mongoose.Types.Currency,
+			currency: "USD",
+			get: (v) => v / 100,
+		},
+		operationalExpenses: {
+			type: mongoose.Types.Currency,
+			currency: "USD",
+			get: (v) => v / 100,
+		},
+		nonOperationalExpenses: {
+			type: mongoose.Types.Currency,
+			currency: "USD",
+			get: (v) => v / 100,
+		},
+		monthlyData: [monthSchema],
+		dailyData: [daySchema],
+	},
+	{ toJSON: { getters: true } }
+);
+
 const KPISchema = new Schema(
 	{
 		totalProfit: {
