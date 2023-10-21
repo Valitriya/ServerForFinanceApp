@@ -5,6 +5,9 @@ import dotenv from "dotenv";
 import helmet from "helmet";
 import morgan from "morgan";
 import mongoose from "mongoose";
+import  kpisRouter from "./routes/kpi.js";
+import KPI from "./models/KPI.js";
+import { kpis } from "./data/data.js"
 
 dotenv.config();
 const app = express();
@@ -16,6 +19,8 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cors());
 
+application.use("/kpi", kpisRouter)
+
 const PORT = process.env.PORT || 9000;
 async function startServer() {
 	try {
@@ -25,9 +30,13 @@ async function startServer() {
 	  console.log('Connected to MongoDB');
 	  
 	  app.listen(PORT, () => console.log(`Server Port: ${PORT}`));
+
+	//   await mongoose.connection.db.dropDatabase();
+	//   KPI.insertMany(kpis);  //только для теста
+
 	} catch (error) {
 	  console.error(`${error} did not connect`);
 	}
-  }
+}
   
   startServer();
