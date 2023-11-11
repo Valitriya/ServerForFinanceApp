@@ -21,4 +21,4 @@ const ProductSchema = new Schema({
   }, { timestamps: true, toJSON: { getters: true } });
 
 
-export default mongoose.model("Product");
+export default mongoose.model("Product", ProductSchema);
