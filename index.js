@@ -8,6 +8,7 @@ import mongoose from "mongoose";
 import  kpisRouter from "./routes/kpi.js";
 import KPI from "./models/KPI.js";
 import Product from "./models/Product.js";
+import productRoutes from "./routes/product.js"
 import { kpis, products } from "./data/data.js"
 
 dotenv.config();
