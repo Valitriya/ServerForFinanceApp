@@ -7,7 +7,7 @@ import morgan from "morgan";
 import mongoose from "mongoose";
 import  kpisRouter from "./routes/kpi.js";
 import KPI from "./models/KPI.js";
-import { kpis } from "./data/data.js"
+import { kpis, products } from "./data/data.js"
 
 dotenv.config();
 const app = express();
@@ -19,7 +19,8 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cors());
 
-app.use("/kpi", kpisRouter)
+app.use("/kpi", kpisRouter);
+app.use("/product", productRoutes);
 
 const PORT = process.env.PORT || 9000;
 async function startServer() {
@@ -31,8 +32,8 @@ async function startServer() {
 	  
 	  app.listen(PORT, () => console.log(`Server Port: ${PORT}`));
 
-	//   await mongoose.connection.db.dropDatabase();
-	//   KPI.insertMany(kpis);  //только для теста
+	  await mongoose.connection.db.dropDatabase();
+	  KPI.insertMany(kpis);  //только для теста
 
 	} catch (error) {
 	  console.error(`${error} did not connect`);
