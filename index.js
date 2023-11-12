@@ -7,7 +7,7 @@ import morgan from "morgan";
 import mongoose from "mongoose";
 import  kpisRouter from "./routes/kpi.js";
 import KPI from "./models/KPI.js";
-import { kpis } from "./data/data.js"
+import { kpis, products } from "./data/data.js"
 
 dotenv.config();
 const app = express();
