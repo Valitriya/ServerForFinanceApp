@@ -10,12 +10,12 @@ const currencyConfig = {
 	get: (v) => v / 100,
 };
 const TransactionSchema = new Schema({
-	price: { ...currencyConfig },
-	expense: { ...currencyConfig },
-	transactions: [
+	buyer: { ...currencyConfig },
+	amount: { ...currencyConfig },
+	productIds: [
 	  {
 		type: mongoose.Schema.Types.ObjectId,
-		ref: "Transaction",
+		ref: "Product",
 	  },
 	],
   }, { timestamps: true, toJSON: { getters: true } });
