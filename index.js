@@ -35,11 +35,11 @@ async function startServer() {
 	  console.log('Connected to MongoDB');
 	  
 	  app.listen(PORT, () => console.log(`Server Port: ${PORT}`));
-	/*только для теста
-	  await mongoose.connection.db.dropDatabase();
-	  KPI.insertMany(kpis);  
-	  Product.insertMany(products);  
-	  */
+	// //только для теста
+	//   await mongoose.connection.db.dropDatabase();
+	//   KPI.insertMany(kpis);  
+	//   Product.insertMany(products);  
+	//   Transaction.insertMany(transactions);
 	} catch (error) {
 	  console.error(`${error} did not connect`);
 	}
