@@ -25,20 +25,22 @@ const monthSchemaConfig = configureSchema({
 	expenses: { ...currencyCongig },
 	operationalExpenses: { ...currencyCongig },
 	nonOperationalExpenses: { ...currencyCongig },
-	monthlyData: [],
-	dailyData: [daySchemaConfig],
 });
 
-const KPISchemaConfig = configureSchema({
-	totalProfit: { ...currencyCongig },
-	totalRevenue: { ...currencyCongig },
-	totalExpenses: { ...currencyCongig },
-	expenseByCategory: {
-		type: Map,
-		of: { ...currencyCongig },
+const KPISchemaConfig = configureSchema(
+	{
+		totalProfit: { ...currencyCongig },
+		totalRevenue: { ...currencyCongig },
+		totalExpenses: { ...currencyCongig },
+		expensesByCategory: {
+			type: Map,
+			of: { ...currencyCongig },
+		},
+		monthlyData: [monthSchemaConfig],
+		dailyData: [daySchemaConfig],
 	},
-	monthlyData: [monthSchemaConfig],
-}, {timestamps: true});
+	{ timestamps: true }
+);
 
 const KPI = mongoose.model("KPI", KPISchemaConfig);
 
