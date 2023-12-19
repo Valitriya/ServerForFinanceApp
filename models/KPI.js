@@ -32,7 +32,7 @@ const monthSchemaConfig = configureSchema({
 const KPISchemaConfig = configureSchema({
 	totalProfit: { ...currencyCongig },
 	totalRevenue: { ...currencyCongig },
-	totaExpenses: { ...currencyCongig },
+	totalExpenses: { ...currencyCongig },
 	expenseByCategory: {
 		type: Map,
 		of: { ...currencyCongig },
